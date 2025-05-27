@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MenuController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -26,3 +27,5 @@ Route::get('/admin/dashboard', function () {
 Route::prefix('admin')->group(function () {
     Route::resource('users', UserController::class);
 });
+
+Route::resource('menus', MenuController::class);
