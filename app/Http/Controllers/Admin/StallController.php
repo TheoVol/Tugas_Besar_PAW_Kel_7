@@ -58,8 +58,4 @@ class StallController extends Controller
         $stall->delete();
         return redirect()->route('stalls.index')->with('success', 'Stall berhasil dihapus.');
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 902cc1dec0a4ac2e206ea07628708409f8b47353

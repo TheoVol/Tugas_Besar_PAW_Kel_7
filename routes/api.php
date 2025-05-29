@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Kantin;
 use App\Models\User;
 use App\Http\Controllers\Api\MenuApiController;
+use App\Http\Controllers\Admin\StallController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -22,7 +23,11 @@ Route::get('/users', function () {
         'status' => 'success',
         'data' => User::all()
     ]);
-}); // ← kurung tutup yang hilang sudah ditambahkan
+});
+
+Route::prefix('admin')->group(function () {
+    Route::apiResource('stalls', StallController::class);
+});
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/menus', [MenuApiController::class, 'index']);       
