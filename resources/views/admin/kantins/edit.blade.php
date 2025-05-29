@@ -31,11 +31,14 @@
                         <i class="bi bi-grid-fill me-2"></i>Table Stall
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="nav-item mt-auto">
                     <a class="btn btn-warning w-100" href="/logout">
                         <i class="bi bi-box-arrow-right me-2"></i>Logout
                     </a>
                 </li>
+=======
+>>>>>>> 902cc1dec0a4ac2e206ea07628708409f8b47353
             </ul>
         </nav>
 
