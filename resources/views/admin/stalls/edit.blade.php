@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit kantin</title>
+    <title>Edit Stall</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
@@ -17,7 +17,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white active" href="{{ route('users.index') }}">
+                    <a class="nav-link text-white" href="{{ route('users.index') }}">
                         <i class="bi bi-people-fill me-2"></i>Table User
                     </a>
                 </li>
@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-4">
-                    <a class="nav-link text-white" href="#">
+                    <a class="nav-link text-white active" href="{{ route('stalls.index') }}">
                         <i class="bi bi-grid-fill me-2"></i>Table Stall
                     </a>
                 </li>
@@ -36,26 +36,43 @@
 
         <div class="flex-grow-1 p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>Edit Kantin</h2>
-                <a href="{{ route('kantins.index') }}" class="btn btn-secondary">
+                <h2>Edit Stall</h2>
+                <a href="{{ route('stalls.index') }}" class="btn btn-secondary">
                     <i class="bi bi-arrow-left me-1"></i> Kembali
                 </a>
             </div>
 
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form action="{{ route('kantins.update', $kantin->id) }}" method="POST">
+                    <form action="{{ route('stalls.update', $stall->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" name="nama" id="nama" value="{{ $kantin->nama }}" class="form-control" required>
+                            <label for="nama_usaha" class="form-label">Nama Usaha</label>
+                            <input type="text" name="nama_usaha" id="nama_usaha" value="{{ $stall->nama_usaha }}" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="lokasi" class="form-label">Lokasi</label>
-                            <input type="text" name="lokasi" id="lokasi" value="{{ $kantin->lokasi }}" class="form-control" required>
+                            <label for="kantin_id" class="form-label">Pilih Kantin</label>
+                            <select name="kantin_id" id="kantin_id" class="form-control" required>
+                                @foreach($kantins as $kantin)
+                                    <option value="{{ $kantin->id }}" {{ $stall->kantin_id == $kantin->id ? 'selected' : '' }}>
+                                        {{ $kantin->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="user_id" class="form-label">Pilih Penjual</label>
+                            <select name="user_id" id="user_id" class="form-control" required>
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}" {{ $stall->user_id == $user->id ? 'selected' : '' }}>
+                                        {{ $user->nama }} ({{ $user->email }})
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="d-grid">

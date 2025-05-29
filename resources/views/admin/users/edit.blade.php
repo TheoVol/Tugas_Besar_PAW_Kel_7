@@ -22,18 +22,13 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white" href="#">
+                    <a class="nav-link text-white" href="{{ route('kantins.index') }}">
                         <i class="bi bi-shop me-2"></i>Table Kantin
                     </a>
                 </li>
                 <li class="nav-item mb-4">
                     <a class="nav-link text-white" href="#">
                         <i class="bi bi-grid-fill me-2"></i>Table Stall
-                    </a>
-                </li>
-                <li class="nav-item mt-auto">
-                    <a class="btn btn-warning w-100" href="/logout">
-                        <i class="bi bi-box-arrow-right me-2"></i>Logout
                     </a>
                 </li>
             </ul>

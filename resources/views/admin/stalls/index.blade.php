@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daftar User</title>
+    <title>Daftar Stall</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
@@ -41,9 +41,9 @@
 
         <div class="flex-grow-1 p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>Daftar User</h2>
-                <a href="{{ route('users.create') }}" class="btn btn-success">
-                    <i class="bi bi-plus-circle me-1"></i> Tambah User
+                <h2>Daftar Stall</h2>
+                <a href="{{ route('stalls.create') }}" class="btn btn-success">
+                    <i class="bi bi-plus-circle me-1"></i> Tambah Stall
                 </a>
             </div>
 
@@ -53,34 +53,34 @@
                         <table class="table table-bordered table-hover align-middle">
                             <thead class="table-primary">
                                 <tr>
-                                    <th>Nama</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
+                                    <th>Nama Usaha</th>
+                                    <th>Kantin</th>
+                                    <th>Penjual</th>
                                     <th style="width: 150px;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
+                            @foreach($stalls as $s)
                                 <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
+                                    <td>{{ $s->nama_usaha }}</td>
+                                    <td>{{ $s->kantin->nama }}</td>
+                                    <td>{{ $s->user->name }}</td>
                                     <td>
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('stalls.edit', $s->id) }}" class="btn btn-sm btn-primary">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('stalls.destroy', $s->id) }}" method="POST" class="d-inline">
                                             @csrf @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Hapus user ini?')">
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Stall ini?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
                                     </td>
                                 </tr>
                             @endforeach
-                            @if($users->isEmpty())
+                            @if($stalls->isEmpty())
                                 <tr>
-                                    <td colspan="4" class="text-center text-muted">Tidak ada data user.</td>
+                                    <td colspan="4" class="text-center text-muted">Tidak ada data stall.</td>
                                 </tr>
                             @endif
                             </tbody>
