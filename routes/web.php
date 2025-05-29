@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\KantinController;
 use App\Http\Controllers\AuthController;
+
 
 Route::get('/', function () {
     return redirect('/login');
@@ -25,4 +27,5 @@ Route::get('/admin/dashboard', function () {
 
 Route::prefix('admin')->group(function () {
     Route::resource('users', UserController::class);
+    Route::resource('kantins', KantinController::class);
 });
