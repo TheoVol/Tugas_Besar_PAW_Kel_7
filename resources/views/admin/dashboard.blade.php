@@ -18,12 +18,12 @@
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white" href="#">
+                    <a class="nav-link text-white" href="{{ route('kantins.index') }}">
                         <i class="bi bi-shop me-2"></i>Table Kantin
                     </a>
                 </li>
                 <li class="nav-item mb-4">
-                    <a class="nav-link text-white" href="#">
+                    <a class="nav-link text-white" href="{{ route('stalls.index') }}">
                         <i class="bi bi-grid-fill me-2"></i>Table Stall
                     </a>
                 </li>

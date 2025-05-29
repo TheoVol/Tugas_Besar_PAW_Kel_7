@@ -1,8 +1,14 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\KantinController;
+use App\Http\Admin\Controllers\StallController;
+use App\Http\Controllers\Admin\StallController as AdminStallController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MenuController;
+
 
 Route::get('/', function () {
     return redirect('/login');
@@ -25,4 +31,8 @@ Route::get('/admin/dashboard', function () {
 
 Route::prefix('admin')->group(function () {
     Route::resource('users', UserController::class);
+    Route::resource('kantins', KantinController::class);
+    Route::resource('stalls', AdminStallController::class);
 });
+
+Route::resource('menus', MenuController::class);
