@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_menu');
+            $table->integer('kuantitas');
             $table->timestamps();
         });
     }
