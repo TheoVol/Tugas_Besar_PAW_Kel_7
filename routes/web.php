@@ -14,9 +14,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegister']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/logout', [AuthController::class, 'logout']);
-Route::get('/pesanan', [PesananController::class, 'index']);
-Route::get('/pesanan/create',[PesananController::class, 'create']);
-Route::post('/pesanan/store', [PesananController::class, 'store']);
+Route::get('/pesan', [PesananController::class, 'index']);
+Route::get('/pesanan',[PesananController::class, 'create'])->name('pesanan.create');
+Route::post('/pesanan', [PesananController::class, 'store'])->name('pesanan.store');
 
 Route::get('/dashboard', function () {
     if (!session('user_id')) return redirect('/login');

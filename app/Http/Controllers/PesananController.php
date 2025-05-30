@@ -8,15 +8,14 @@ use App\Models\Menu;
 use App\Models\Pesanan;
 
 
-class Mahasiswacontroller extends Controller
+class PesananController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $Menus = Menu::latest()
-        return new MenuResource(true, 'List menu', $Menus)
+        return view('pesanan.create');
     }
 
     /**
@@ -24,7 +23,7 @@ class Mahasiswacontroller extends Controller
      */
     public function create()
     {
-        return view('pesanan.create')
+        return view('pesanan.create');
     }
 
     /**
@@ -33,7 +32,7 @@ class Mahasiswacontroller extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'nama_menu' => 'required|string'
+            'nama_menu' => 'required|string',
             'kuantitas' => 'required|int'
         ]);
 
@@ -52,7 +51,7 @@ class Mahasiswacontroller extends Controller
             'kuantitas' => $request->kuantitas,
         ]);
 
-        return redirect()->back()->with('success', 'Pesanan berhasil')
+        return redirect()->back()->with('success', 'Pesanan berhasil');
     }
 
     /**
