@@ -20,6 +20,12 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/pesan', [PesananController::class, 'index']);
 Route::get('/pesanan',[PesananController::class, 'create'])->name('pesanan.create');
 Route::post('/pesanan', [PesananController::class, 'store'])->name('pesanan.store');
+Route::get('/kantin', [KantinController::class, 'index'])->name('kantins.index');
+Route::get('/kantin', [KantinController::class, 'index'])->name('kantins.index');
+
+Route::get('dashboard', function () {
+    return view('dashboard');
+});
 
 Route::get('/dashboard', function () {
     if (!session('user_id')) return redirect('/login');
