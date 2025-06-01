@@ -25,14 +25,37 @@ Route::get('/users', function () {
     ]);
 });
 
+Route::post('/login', function(Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        return response()->json(['message' => 'Invalid credentials'], 401);
+    }
+
+    // Hapus token lama jika perlu
+    $user->tokens()->delete();
+
+    $token = $user->createToken('api-token')->plainTextToken;
+
+    return response()->json([
+        'status' => 'success',
+        'token' => $token,
+        'user' => $user,
+    ]);
+});
+
 Route::prefix('admin')->group(function () {
     Route::apiResource('stalls', StallController::class);
 });
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/menus', [MenuApiController::class, 'index']);       
-    Route::get('/menus/{id}', [MenuApiController::class, 'show']); 
-    Route::post('/menus', [MenuApiController::class, 'store']);
-    Route::put('/menus/{id}', [MenuApiController::class, 'update']);
-    Route::delete('/menus/{id}', [MenuApiController::class, 'destroy']);
-});
+
+Route::get('/menus', [MenuApiController::class, 'index']);       
+Route::get('/menus/{id}', [MenuApiController::class, 'show']); 
+Route::post('/menus', [MenuApiController::class, 'store']);
+Route::put('/menus/{id}', [MenuApiController::class, 'update']);
+Route::delete('/menus/{id}', [MenuApiController::class, 'destroy']);
