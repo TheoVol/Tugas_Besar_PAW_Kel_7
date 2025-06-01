@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        @if(Auth::user()->role !== 'penjual')
+        @if(session('user_role') !== 'penjual')
             <div class="alert alert-danger">Anda tidak memiliki akses ke halaman ini.</div>
             @php exit; @endphp
         @endif

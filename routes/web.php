@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\Admin\KantinController;
 
 
 Route::get('/', function () {
@@ -34,6 +35,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
+});
+
+Route::get('/penjual/dashboard', function () {
+    return view('penjual.dashboard');
 });
 
 Route::prefix('admin')->group(function () {
