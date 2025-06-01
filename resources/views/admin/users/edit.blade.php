@@ -8,32 +8,6 @@
 <body class="bg-light">
 
     <div class="d-flex" style="min-height: 100vh;">
-        <nav class="bg-danger text-white p-3" style="width: 250px;">
-            <h4 class="text-white mb-4">Admin Panel</h4>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white" href="/admin/dashboard">
-                        <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white active" href="{{ route('users.index') }}">
-                        <i class="bi bi-people-fill me-2"></i>Table User
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white" href="{{ route('kantins.index') }}">
-                        <i class="bi bi-shop me-2"></i>Table Kantin
-                    </a>
-                </li>
-                <li class="nav-item mb-4">
-                    <a class="nav-link text-white" href="#">
-                        <i class="bi bi-grid-fill me-2"></i>Table Stall
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
         <div class="flex-grow-1 p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2>Edit User</h2>

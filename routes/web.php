@@ -1,13 +1,12 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\Admin\KantinController;
-
+use App\Http\Controllers\Admin\StallController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -24,10 +23,6 @@ Route::post('/pesanan', [PesananController::class, 'store'])->name('pesanan.stor
 Route::get('/kantin', [KantinController::class, 'index'])->name('kantins.index');
 Route::get('/kantin', [KantinController::class, 'index'])->name('kantins.index');
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
-
 Route::get('/dashboard', function () {
     if (!session('user_id')) return redirect('/login');
     return view('dashboard');
@@ -43,6 +38,8 @@ Route::get('/penjual/dashboard', function () {
 
 Route::prefix('admin')->group(function () {
     Route::resource('users', UserController::class);
+    Route::resource('kantins', KantinController::class);
+    Route::resource('stalls', StallController::class);
 });
 
 Route::resource('menus', MenuController::class);
